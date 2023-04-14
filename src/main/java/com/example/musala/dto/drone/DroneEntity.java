@@ -4,21 +4,23 @@ import com.example.musala.dto.goods.Medication;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
 
 import java.util.List;
+import java.util.UUID;
 
 @AllArgsConstructor
 @Builder
 @Getter
-@Setter
-public class DroneDto {
+public class DroneEntity {
+
+    private final String serialNumber;
     private final DroneModelDto model;
-    private String serialNumber;
+    private final List<Medication> cargo; // TODO (biggest problem) now we can add only medication cargo )) but drone should be cargo-type agnostic
     private float batteryCapacity;
     private DroneState state;
+    private UUID id;
 
-    private List<Medication> load;
-
-
+    public void setId(UUID id) {
+        this.id = id;
+    }
 }

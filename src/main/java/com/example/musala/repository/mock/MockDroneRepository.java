@@ -1,19 +1,30 @@
 package com.example.musala.repository.mock;
 
-import com.example.musala.dto.drone.DroneDto;
+import com.example.musala.dto.drone.DroneEntity;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
-import java.util.concurrent.ConcurrentHashMap;
 
 @Repository
-public class MockDroneRepository {
+public class MockDroneRepository { // TODO do normal mock with real repo and inside it mock mechanism
 
-    private final ConcurrentHashMap<UUID, DroneDto> droneStorage = new ConcurrentHashMap<>();
+    private final List<DroneEntity> droneStorage = new ArrayList<>(); // TODO here i dont care about concurrency of course, it is a test program.
 
-    public UUID save(DroneDto model) {
-        UUID uuid = UUID.randomUUID();
-        droneStorage.put(uuid, model);
-        return uuid;
+    public UUID save(DroneEntity entity) {
+        if (Objects.isNull(entity.getId())) {
+            UUID uuid = UUID.randomUUID();
+            entity.setId(uuid);
+            droneStorage.add(entity);
+            return uuid;
+        }
+        return entity.getId();
+    }
+
+
+    public DroneEntity get(UUID id) {
+        return droneStorage.stream().filter(e -> e.getId() == id).findFirst().get(); // and about exceptions too )
     }
 }
