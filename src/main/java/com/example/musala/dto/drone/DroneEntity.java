@@ -23,4 +23,12 @@ public class DroneEntity {
     public void setId(UUID id) {
         this.id = id;
     }
+
+    public void setBatteryCapacity(float batteryCapacity) {
+        this.batteryCapacity = batteryCapacity;
+    }
+
+    public void setState(DroneState state) {
+        this.state = state;
+    }
 }

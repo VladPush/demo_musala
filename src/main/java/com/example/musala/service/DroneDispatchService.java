@@ -29,7 +29,10 @@ public class DroneDispatchService {
 
     public boolean load(UUID id, List<Medication> goods) {
         DroneEntity droneEntity = repository.get(id);
-
+        if (droneEntity.getBatteryCapacity() < 25.0f) {
+            throw new IllegalStateException("Battery capacity is low for loading");
+        }
+        droneEntity.setState(DroneState.LOADING);
         int maxWeight = droneEntity.getModel().maxWeight();
         int additionalWeight = goods.stream().mapToInt(Medication::getWeight).sum();
         int currentWeight = droneEntity.getCargo().stream().mapToInt(Medication::getWeight).sum();
@@ -37,8 +40,17 @@ public class DroneDispatchService {
         if (maxWeight >= additionalWeight + currentWeight) {
             droneEntity.getCargo().addAll(goods);
             repository.save(droneEntity); // TODO we will dont need it when real JPA will work
+            droneEntity.setState(DroneState.LOADED);
             return true;
         }
         return false;
+    }
+
+    public List<Medication> getCargo(UUID id) {
+        return repository.get(id).getCargo();
+    }
+
+    public List<DroneEntity> getAvailableDrones() {
+        return null;
     }
 }
