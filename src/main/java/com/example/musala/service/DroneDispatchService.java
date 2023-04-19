@@ -6,19 +6,19 @@ import com.example.musala.dto.drone.DroneState;
 import com.example.musala.dto.goods.Goods;
 import com.example.musala.dto.goods.Medication;
 import com.example.musala.repository.DroneRepository;
+import com.example.musala.repository.MedicationRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.List;
-import java.util.UUID;
 
 @Service
 @AllArgsConstructor
 public class DroneDispatchService {
 
     private final DroneRepository repository;
+    private final MedicationRepository medicationRepository;
 
     public DroneEntity register(final DroneModelDto model) {
         DroneEntity droneEntity = DroneEntity.builder()
@@ -50,9 +50,8 @@ public class DroneDispatchService {
         return false;
     }
 
-    public List<Medication> getCargo(UUID id) {
-        //   return repository.get(id).getCargo();
-        return Collections.emptyList();
+    public List<Medication> getCargo(long id) {
+        return medicationRepository.findAllByDroneId(id);
     }
 
     public List<DroneEntity> getAvailableDrones() {

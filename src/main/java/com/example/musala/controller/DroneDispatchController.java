@@ -8,7 +8,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/drone")
@@ -32,8 +31,8 @@ public class DroneDispatchController {
         return droneDispatchService.get(id);
     }
 
-    @GetMapping("/cargo")
-    public List<Medication> getCargo(final UUID id) {
+    @GetMapping("/cargo/{id}")
+    public List<Medication> getCargo(@PathVariable final long id) {
         return droneDispatchService.getCargo(id);
     }
 
