@@ -25,7 +25,7 @@ public class DroneEntity {
     @JoinColumn(name = "drone_id")
     @ToString.Exclude
     private Set<Medication> cargo; // TODO (biggest problem) now we can add only medication cargo )) but drone should be cargo-type agnostic
-    private float batteryCapacity;
+    private float batteryLevel;
     private DroneState state;
 
 }

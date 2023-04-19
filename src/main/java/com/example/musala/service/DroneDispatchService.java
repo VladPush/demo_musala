@@ -25,7 +25,7 @@ public class DroneDispatchService {
                 .serialNumber(model.serial())
                 .model(model.type())
                 .weight(model.maxWeight())
-                .batteryCapacity(100.0f)
+                .batteryLevel(100.0f)
                 .state(DroneState.IDLE)
                 .build();
         return repository.save(droneEntity);
@@ -34,7 +34,7 @@ public class DroneDispatchService {
     @Transactional
     public boolean load(long id, List<Medication> goods) {
         DroneEntity droneEntity = repository.findById(id).get();
-        if (droneEntity.getBatteryCapacity() < 25.0f) {
+        if (droneEntity.getBatteryLevel() < 25.0f) {
             throw new IllegalStateException("Battery capacity is low for loading");
         }
         droneEntity.setState(DroneState.LOADING);
@@ -55,10 +55,14 @@ public class DroneDispatchService {
     }
 
     public List<DroneEntity> getAvailableDrones() {
-        return null;
+        return repository.getAllByBatteryLevelAfterAndState(25, DroneState.IDLE);
     }
 
     public DroneEntity get(long id) {
         return repository.findById(id).get();
+    }
+
+    public float getBatteryLevel(long id) {
+        return repository.getBatteryLevel(id);
     }
 }

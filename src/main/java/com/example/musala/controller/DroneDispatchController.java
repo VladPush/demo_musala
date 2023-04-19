@@ -37,7 +37,12 @@ public class DroneDispatchController {
     }
 
     @GetMapping("/available")
-    public List<DroneEntity> getCargo() {
+    public List<DroneEntity> getAvailableDrones() {
         return droneDispatchService.getAvailableDrones();
+    }
+
+    @GetMapping("/battery/{id}")
+    public float getBatteryLevel(@PathVariable final long id) {
+        return droneDispatchService.getBatteryLevel(id);
     }
 }
