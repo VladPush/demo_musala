@@ -22,7 +22,7 @@ public class DroneEntity {
     private DroneType model;
 
     private int weight;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "drone_id")
     private Set<Medication> cargo; // TODO (biggest problem) now we can add only medication cargo )) but drone should be cargo-type agnostic
     private float batteryCapacity;

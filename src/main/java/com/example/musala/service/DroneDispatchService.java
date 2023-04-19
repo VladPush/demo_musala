@@ -3,8 +3,10 @@ package com.example.musala.service;
 import com.example.musala.dto.drone.DroneEntity;
 import com.example.musala.dto.drone.DroneModelDto;
 import com.example.musala.dto.drone.DroneState;
+import com.example.musala.dto.goods.Goods;
 import com.example.musala.dto.goods.Medication;
 import com.example.musala.repository.DroneRepository;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -29,22 +31,22 @@ public class DroneDispatchService {
         return repository.save(droneEntity);
     }
 
-    public boolean load(UUID id, List<Medication> goods) {
-  /*      DroneEntity droneEntity = repository.get(id);
+    @Transactional
+    public boolean load(long id, List<Medication> goods) {
+        DroneEntity droneEntity = repository.findById(id).get();
         if (droneEntity.getBatteryCapacity() < 25.0f) {
             throw new IllegalStateException("Battery capacity is low for loading");
         }
         droneEntity.setState(DroneState.LOADING);
         int maxWeight = droneEntity.getWeight();
-        int additionalWeight = goods.stream().mapToInt(Medication::getWeight).sum();
+        int additionalWeight = goods.stream().mapToInt(Goods::getWeight).sum();
         int currentWeight = droneEntity.getCargo().stream().mapToInt(Medication::getWeight).sum();
 
         if (maxWeight >= additionalWeight + currentWeight) {
             droneEntity.getCargo().addAll(goods);
-            repository.save(droneEntity); // TODO we will dont need it when real JPA will work
             droneEntity.setState(DroneState.LOADED);
             return true;
-        }*/
+        }
         return false;
     }
 

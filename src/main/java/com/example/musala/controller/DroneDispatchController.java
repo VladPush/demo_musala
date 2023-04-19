@@ -22,14 +22,14 @@ public class DroneDispatchController {
         return droneDispatchService.register(model).getId();
     }
 
+    @PostMapping("/load")
+    public boolean load(@RequestParam final long id, @RequestBody final List<Medication> goods) {
+        return droneDispatchService.load(id, goods);
+    }
+
     @GetMapping("/{id}")
     public DroneEntity register(@PathVariable final long id) {
         return droneDispatchService.get(id);
-    }
-
-    @PostMapping("/load")
-    public boolean load(final UUID id, final List<Medication> goods) {
-        return droneDispatchService.load(id, goods);
     }
 
     @GetMapping("/cargo")
