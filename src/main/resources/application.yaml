@@ -11,3 +11,11 @@ spring:
   h2:
     console:
       enabled: true
+
+logging:
+  file:
+    name: logs/application-debug.log
+  pattern:
+    file: "%d %-5level [%thread] %logger : %msg%n"
+  level:
+    com.example.musala.scheduler: INFO
