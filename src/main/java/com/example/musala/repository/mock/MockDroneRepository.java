@@ -1,6 +1,6 @@
 package com.example.musala.repository.mock;
 
-import com.example.musala.dto.drone.DroneEntity;
+import com.example.musala.entity.drone.DroneEntity;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;

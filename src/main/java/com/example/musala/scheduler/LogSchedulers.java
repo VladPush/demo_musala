@@ -1,6 +1,6 @@
 package com.example.musala.scheduler;
 
-import com.example.musala.dto.drone.BatteryLevelView;
+import com.example.musala.entity.drone.BatteryLevelView;
 import com.example.musala.repository.DroneRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,7 +18,7 @@ public class LogSchedulers {
 
     @Scheduled(fixedRate = 5000)
     public void logBatteryLevels() {
-        List<BatteryLevelView> allDrones = repository.getAllBy(); // TODO  get peagable
+        List<BatteryLevelView> allDrones = repository.getAllBy(); // TODO peagable
         int i = 0;
         StringBuilder builder = new StringBuilder(1000);
         for (BatteryLevelView drone : allDrones) {

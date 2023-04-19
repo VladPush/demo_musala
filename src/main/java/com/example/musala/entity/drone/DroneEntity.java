@@ -1,6 +1,6 @@
-package com.example.musala.dto.drone;
+package com.example.musala.entity.drone;
 
-import com.example.musala.dto.goods.Medication;
+import com.example.musala.entity.goods.MedicationEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -11,7 +11,7 @@ import java.util.Set;
 @Builder
 @Getter
 @Setter
-@Entity(name = "drone_entity")
+@Entity(name = "drone")
 @EqualsAndHashCode(exclude = "cargo")
 public class DroneEntity {
     @Id
@@ -24,7 +24,7 @@ public class DroneEntity {
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "drone_id")
     @ToString.Exclude
-    private Set<Medication> cargo; // TODO (biggest problem) now we can add only medication cargo )) but drone should be cargo-type agnostic
+    private Set<MedicationEntity> cargo; // TODO (biggest problem) now we can add only medication cargo )) but drone should be cargo-type agnostic
     private float batteryLevel;
     private DroneState state;
 

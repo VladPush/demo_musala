@@ -1,8 +1,8 @@
 package com.example.musala.repository;
 
-import com.example.musala.dto.drone.BatteryLevelView;
-import com.example.musala.dto.drone.DroneEntity;
-import com.example.musala.dto.drone.DroneState;
+import com.example.musala.entity.drone.BatteryLevelView;
+import com.example.musala.entity.drone.DroneEntity;
+import com.example.musala.entity.drone.DroneState;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.transaction.annotation.Transactional;

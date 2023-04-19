@@ -1,13 +1,13 @@
-package com.example.musala.dto.goods;
+package com.example.musala.entity.goods;
 
-import com.example.musala.dto.drone.DroneEntity;
+import com.example.musala.entity.drone.DroneEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
 @Data
 @MappedSuperclass
-public abstract sealed class Goods permits Medication {
+public abstract sealed class Goods permits MedicationEntity {
     @Id
     @GeneratedValue
     private Long id;
