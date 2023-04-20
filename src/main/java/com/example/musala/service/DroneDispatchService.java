@@ -5,6 +5,7 @@ import com.example.musala.dto.MedicationDto;
 import com.example.musala.entity.drone.DroneEntity;
 import com.example.musala.entity.drone.DroneState;
 import com.example.musala.entity.goods.MedicationEntity;
+import com.example.musala.exception.LowBatteryException;
 import com.example.musala.repository.DroneRepository;
 import com.example.musala.repository.MedicationRepository;
 import jakarta.transaction.Transactional;
@@ -48,7 +49,7 @@ public class DroneDispatchService {
     public boolean load(long id, List<MedicationDto> goods) {
         DroneEntity droneEntity = repository.findById(id).get();
         if (droneEntity.getBatteryLevel() < 25.0f) {
-            throw new IllegalStateException("Battery capacity is low for loading");
+            throw new LowBatteryException(String.format("Battery level is low for loading. Current level = %s%%", droneEntity.getBatteryLevel()));
         }
         droneEntity.setState(DroneState.LOADING);
         int maxWeight = droneEntity.getWeight();
