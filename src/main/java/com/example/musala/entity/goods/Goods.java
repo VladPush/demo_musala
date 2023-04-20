@@ -22,7 +22,7 @@ public abstract class Goods {
     @GeneratedValue
     private Long id;
 
-    @Column(insertable = false, updatable = false)
+    @Column(insertable = false, updatable = false, nullable = false)
     private String goodsType;
     @Pattern(regexp = "^[a-zA-Z0-9_-]+$")
     private String name;
