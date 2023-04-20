@@ -5,9 +5,13 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Pattern;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 @Data
 @MappedSuperclass
+@SuperBuilder
+@NoArgsConstructor
 public abstract sealed class Goods permits MedicationEntity {
     @Id
     @GeneratedValue

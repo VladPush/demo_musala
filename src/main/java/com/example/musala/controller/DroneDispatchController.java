@@ -1,8 +1,8 @@
 package com.example.musala.controller;
 
 import com.example.musala.dto.DroneCreateDto;
+import com.example.musala.dto.MedicationDto;
 import com.example.musala.entity.drone.DroneEntity;
-import com.example.musala.entity.goods.MedicationEntity;
 import com.example.musala.service.DroneDispatchService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -23,7 +23,7 @@ public class DroneDispatchController {
     }
 
     @PostMapping("/load")
-    public boolean load(@RequestParam final long id, @RequestBody final List<MedicationEntity> goods) { //TODO change to dto
+    public boolean load(@RequestParam final long id, @RequestBody final List<MedicationDto> goods) {
         return droneDispatchService.load(id, goods);
     }
 
@@ -33,7 +33,7 @@ public class DroneDispatchController {
     }
 
     @GetMapping("/cargo/{id}")
-    public List<MedicationEntity> getCargo(@PathVariable final long id) {
+    public List<MedicationDto> getCargo(@PathVariable final long id) {
         return droneDispatchService.getCargo(id);
     }
 
