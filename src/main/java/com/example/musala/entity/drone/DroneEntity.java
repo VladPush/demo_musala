@@ -8,6 +8,8 @@ import lombok.*;
 
 import java.util.Set;
 
+import static jakarta.persistence.EnumType.STRING;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -21,6 +23,7 @@ public class DroneEntity {
     private long id;
     @Size(max = 100)
     private String serialNumber;
+    @Enumerated(STRING)
     private DroneType model;
     @Max(500)
     private int weight;
@@ -29,6 +32,7 @@ public class DroneEntity {
     @ToString.Exclude
     private Set<MedicationEntity> cargo; // TODO (biggest problem) now we can add only medication cargo )) but drone should be cargo-type agnostic
     private float batteryLevel;
+    @Enumerated(STRING)
     private DroneState state;
 
 }
