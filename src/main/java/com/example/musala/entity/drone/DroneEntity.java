@@ -2,6 +2,8 @@ package com.example.musala.entity.drone;
 
 import com.example.musala.entity.goods.MedicationEntity;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 
 import java.util.Set;
@@ -17,9 +19,10 @@ public class DroneEntity {
     @Id
     @GeneratedValue
     private long id;
+    @Size(max = 100)
     private String serialNumber;
     private DroneType model;
-
+    @Max(500)
     private int weight;
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "drone_id")

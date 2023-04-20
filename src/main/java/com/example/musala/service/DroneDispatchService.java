@@ -1,7 +1,7 @@
 package com.example.musala.service;
 
+import com.example.musala.dto.DroneCreateDto;
 import com.example.musala.entity.drone.DroneEntity;
-import com.example.musala.entity.drone.DroneModelDto;
 import com.example.musala.entity.drone.DroneState;
 import com.example.musala.entity.goods.Goods;
 import com.example.musala.entity.goods.MedicationEntity;
@@ -20,7 +20,7 @@ public class DroneDispatchService {
     private final DroneRepository repository;
     private final MedicationRepository medicationRepository;
 
-    public DroneEntity register(final DroneModelDto model) {
+    public DroneEntity register(final DroneCreateDto model) {
         DroneEntity droneEntity = DroneEntity.builder()
                 .serialNumber(model.serial())
                 .model(model.type())

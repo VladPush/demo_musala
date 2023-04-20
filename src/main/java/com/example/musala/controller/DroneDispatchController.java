@@ -1,9 +1,10 @@
 package com.example.musala.controller;
 
+import com.example.musala.dto.DroneCreateDto;
 import com.example.musala.entity.drone.DroneEntity;
-import com.example.musala.entity.drone.DroneModelDto;
 import com.example.musala.entity.goods.MedicationEntity;
 import com.example.musala.service.DroneDispatchService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,17 +18,17 @@ public class DroneDispatchController {
     private final DroneDispatchService droneDispatchService;
 
     @PostMapping("/register")
-    public long register(@RequestBody final DroneModelDto model) {
+    public long register(@RequestBody @Valid final DroneCreateDto model) {
         return droneDispatchService.register(model).getId();
     }
 
     @PostMapping("/load")
-    public boolean load(@RequestParam final long id, @RequestBody final List<MedicationEntity> goods) {
+    public boolean load(@RequestParam final long id, @RequestBody final List<MedicationEntity> goods) { //TODO change to dto
         return droneDispatchService.load(id, goods);
     }
 
     @GetMapping("/{id}")
-    public DroneEntity register(@PathVariable final long id) {
+    public DroneEntity get(@PathVariable final long id) {
         return droneDispatchService.get(id);
     }
 

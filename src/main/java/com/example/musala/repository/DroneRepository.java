@@ -13,7 +13,7 @@ public interface DroneRepository extends JpaRepository<DroneEntity, Long> {
 
     List<DroneEntity> getAllByBatteryLevelAfterAndState(float batteryLevel, DroneState state);
 
-    @Query(value = "SELECT batteryLevel FROM drone_entity where id = ?1")
+    @Query(value = "SELECT batteryLevel FROM drone where id = ?1")
     float getBatteryLevel(long id);
 
     @Transactional(readOnly = true)
