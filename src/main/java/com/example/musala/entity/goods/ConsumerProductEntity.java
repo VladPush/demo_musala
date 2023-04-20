@@ -3,7 +3,6 @@ package com.example.musala.entity.goods;
 
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
-import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -13,11 +12,9 @@ import lombok.experimental.SuperBuilder;
 @Data
 @SuperBuilder
 @NoArgsConstructor
-@Entity(name = "medication")
-@DiscriminatorValue(value = GoodsType.Values.MEDICATION)
-public final class MedicationEntity extends Goods {
+@Entity(name = "consumer_product")
+@DiscriminatorValue(value = GoodsType.Values.CONSUMER_GOODS)
+public final class ConsumerProductEntity extends Goods {
 
-    @Pattern(regexp = "^[A-Z0-9_]+$")
-    private String code;
-    private byte[] image;
+    private String tradeMark;
 }

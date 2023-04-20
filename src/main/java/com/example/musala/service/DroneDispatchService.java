@@ -69,6 +69,7 @@ public class DroneDispatchService {
         return medicationRepository.findAllByDroneId(id)
                 .stream()
                 .map(it -> MedicationDto.builder() // TODO replace to mapstruct
+                        .id(it.getId())
                         .droneId(it.getId())
                         .image(it.getImage())
                         .code(it.getCode())

@@ -8,14 +8,22 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
+import static jakarta.persistence.InheritanceType.SINGLE_TABLE;
+
 @Data
-@MappedSuperclass
+@Inheritance(strategy = SINGLE_TABLE) //TODO INHERITANCE USAGE FOR FUTURE
+@DiscriminatorColumn(name = "goodsType",
+        discriminatorType = DiscriminatorType.STRING)
 @SuperBuilder
 @NoArgsConstructor
-public abstract sealed class Goods permits MedicationEntity {
+@Entity
+public abstract class Goods {
     @Id
     @GeneratedValue
     private Long id;
+
+    @Column(insertable = false, updatable = false)
+    private String goodsType;
     @Pattern(regexp = "^[a-zA-Z0-9_-]+$")
     private String name;
     private int weight;
