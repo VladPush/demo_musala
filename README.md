@@ -5,6 +5,10 @@
 3. Right-click on the main class and select "Run" from the context menu.
 4. Alternatively, you can click on the green arrow icon located on the left-hand side of the main class to run it.
 
+### Test
+
+Use command `mvn test` to start tests.
+
 ### Api
 
 Use [swagger-ui](http://localhost:8080/swagger-ui/index.html) to explore api.
@@ -19,6 +23,6 @@ username - pa
 password - password
 `
 
-#### License
+##### License
 
 [Vladislav P.](https://stackoverflow.com/)

@@ -20,3 +20,8 @@ logging:
     file: "%d %-5level [%thread] %logger : %msg%n"
   level:
     com.example.musala.scheduler: INFO
+
+
+scheduler:
+  logBatteryLevels:
+    fixedRate: 5000

@@ -48,7 +48,7 @@ class DroneDispatchServiceTest {
 
     @Test
     void registerFailIncorrectSerial() {
-        String incorrectSerial = "10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
+        String incorrectSerial = "10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001";
 
         TransactionSystemException exception = Assertions.assertThrows(TransactionSystemException.class, () -> {
             service.register(new DroneCreateDto(DroneType.CRUISERWEIGHT, 500, incorrectSerial));

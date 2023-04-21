@@ -16,10 +16,13 @@ public class LogSchedulers {
 
     private final DroneRepository repository;
 
-    @Scheduled(fixedRate = 5000)
+    @Scheduled(fixedRateString = "${scheduler.logBatteryLevels.fixedRate}")
     public void logBatteryLevels() {
         List<BatteryLevelView> allDrones = repository.getAllBy(); // TODO peagable
         int i = 0;
+        if (allDrones.isEmpty()) {
+            log.warn("Where are our drones??");
+        }
         StringBuilder builder = new StringBuilder(1000);
         for (BatteryLevelView drone : allDrones) {
             if (i < 25) {
