@@ -1,11 +1,11 @@
-package com.example.musala.entity.goods;
+package com.example.musala.entity.product.core;
 
-public enum GoodsType {
+public enum ProductType {
     MEDICATION(Values.MEDICATION),
     CONSUMER_GOODS(Values.CONSUMER_GOODS);
 
 
-    GoodsType(String medication) {
+    ProductType(String medication) {
     }
 
     public static class Values {

@@ -1,6 +1,6 @@
 package com.example.musala.entity.drone;
 
-import com.example.musala.entity.goods.MedicationEntity;
+import com.example.musala.entity.product.MedicationEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Size;

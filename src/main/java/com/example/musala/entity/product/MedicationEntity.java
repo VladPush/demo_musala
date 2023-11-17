@@ -1,6 +1,8 @@
-package com.example.musala.entity.goods;
+package com.example.musala.entity.product;
 
 
+import com.example.musala.entity.product.core.Product;
+import com.example.musala.entity.product.core.ProductType;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.validation.constraints.Pattern;
@@ -14,8 +16,8 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 @NoArgsConstructor
 @Entity(name = "medication")
-@DiscriminatorValue(value = GoodsType.Values.MEDICATION)
-public final class MedicationEntity extends Goods {
+@DiscriminatorValue(value = ProductType.Values.MEDICATION)
+public final class MedicationEntity extends Product {
 
     @Pattern(regexp = "^[A-Z0-9_]+$")
     private String code;

@@ -13,6 +13,16 @@ spring:
     console:
       enabled: true
 
+management: # actuator config
+  server:
+    port: 8090
+  endpoints:
+    enabled-by-default: false
+  endpoint:
+    health:
+      enabled: true
+
+
 logging:
   file:
     name: logs/application-debug.log
@@ -24,4 +34,4 @@ logging:
 
 scheduler:
   logBatteryLevels:
-    fixedRate: 5000
+    fixedRate: 100000

@@ -1,6 +1,8 @@
-package com.example.musala.entity.goods;
+package com.example.musala.entity.product;
 
 
+import com.example.musala.entity.product.core.Product;
+import com.example.musala.entity.product.core.ProductType;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import lombok.Data;
@@ -12,9 +14,9 @@ import lombok.experimental.SuperBuilder;
 @Data
 @SuperBuilder
 @NoArgsConstructor
-@Entity(name = "consumer_product")
-@DiscriminatorValue(value = GoodsType.Values.CONSUMER_GOODS)
-public final class ConsumerProductEntity extends Goods {
+@Entity(name = "consumer_goods")
+@DiscriminatorValue(value = ProductType.Values.CONSUMER_GOODS)
+public final class ConsumerGoodsEntity extends Product {
 
     private String tradeMark;
 }

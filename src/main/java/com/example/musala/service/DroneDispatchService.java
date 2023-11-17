@@ -4,7 +4,7 @@ import com.example.musala.dto.DroneCreateDto;
 import com.example.musala.dto.MedicationDto;
 import com.example.musala.entity.drone.DroneEntity;
 import com.example.musala.entity.drone.DroneState;
-import com.example.musala.entity.goods.MedicationEntity;
+import com.example.musala.entity.product.MedicationEntity;
 import com.example.musala.exception.LowBatteryException;
 import com.example.musala.repository.DroneRepository;
 import com.example.musala.repository.MedicationRepository;
